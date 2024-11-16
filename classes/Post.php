@@ -51,5 +51,12 @@ class Post {
         $stmt->execute();
         return $stmt;
     }
+    public function readSingle($id) {
+        $query = "SELECT p.*, u.username as author FROM " . $this->tableName . " p JOIN users u ON p.author_id = u.id WHERE p.id = :id";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 ?>

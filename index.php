@@ -32,6 +32,7 @@ $posts = $post->readAll();
                     <?php endif; ?>
                     <p class="card-text"><?php echo htmlspecialchars($row['content']); ?></p>
                     <small class="text-muted">Publicado por <?php echo htmlspecialchars($row['author']); ?> el <?php echo $row['created_at']; ?></small>
+                    <a href="single_post.php?id=<?php echo $row['id']; ?>" class="btn btn-primary mt-3">Ver Publicación</a>
                 </div>
             </div>
         <?php endwhile; ?>

@@ -31,5 +31,12 @@ class Comment {
         }
         return false;
     }
+    public function readByPostId($postId) {
+        $query = "SELECT c.*, u.username FROM " . $this->tableName . " c JOIN users u ON c.user_id = u.id WHERE c.post_id = :postId ORDER BY c.created_at DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(':postId', $postId);
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>
