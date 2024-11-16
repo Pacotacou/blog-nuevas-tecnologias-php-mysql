@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <nav class="container d-flex justify-content-between">
         <a href="index.php" class="text-white">Inicio</a>
         <?php if (isset($_SESSION['username'])): ?>
-            <span class="text-white">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+            <span class="text-white mr-3">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
         <?php endif; ?>
         <?php if (isset($_SESSION['user_id'])): ?>
             <a href="my_posts.php" class="text-white">Mis Publicaciones</a>
