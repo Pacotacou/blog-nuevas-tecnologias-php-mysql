@@ -16,7 +16,7 @@
 3. **Create Database:**
    - Open phpMyAdmin (usually accessible at `http://localhost/phpmyadmin`).
    - Create a new database named `blog2`.
-   - Import the `/database/setup.sql` script to set up the necessary tables.
+   - Import the `/database/setup.sql` or `/database/test_data.sql` script to set up the necessary tables.
 
 4. **Create Uploads Folder:**
    - In the root directory of your project, create a folder named `uploads`.
