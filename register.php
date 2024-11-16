@@ -16,7 +16,7 @@ if ($_POST) {
         header("Location: login.php");
         exit;
     } else {
-        echo "Error al registrar el usuario.";
+        echo "<p style='color:red;'>Error al registrar el usuario.</p>";
     }
 }
 ?>

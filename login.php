@@ -18,7 +18,7 @@ if ($_POST) {
         header("Location: post.php");
         exit;
     } else {
-        echo "Error al iniciar sesión.";
+        echo "<p style='color:red;'>Error al iniciar sesión. Verifique sus credenciales.</p>";
     }
 }
 ?>

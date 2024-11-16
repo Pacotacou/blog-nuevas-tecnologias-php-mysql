@@ -17,9 +17,9 @@ if ($_POST) {
     $comment->content = $_POST['content'];
 
     if ($comment->create()) {
-        echo "Comentario agregado exitosamente.";
+        echo "<p style='color:green;'>Comentario agregado exitosamente.</p>";
     } else {
-        echo "Error al agregar el comentario.";
+        echo "<p style='color:red;'>Error al agregar el comentario.</p>";
     }
 }
 ?>

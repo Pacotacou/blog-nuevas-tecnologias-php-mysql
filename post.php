@@ -17,9 +17,9 @@ if ($_POST) {
     $post->authorId = $_SESSION['user_id'];
 
     if ($post->create()) {
-        echo "Publicación creada exitosamente.";
+        echo "<p style='color:green;'>Publicación creada exitosamente.</p>";
     } else {
-        echo "Error al crear la publicación.";
+        echo "<p style='color:red;'>Error al crear la publicación.</p>";
     }
 }
 
