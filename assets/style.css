@@ -7,9 +7,16 @@ body {
 
 header {
     background-color: #007bff;
-    color: #fff;
+    color: #ffffff;
     padding: 15px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
 }
 
 header a {
