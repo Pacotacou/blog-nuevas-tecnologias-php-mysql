@@ -28,14 +28,21 @@ if ($_POST) {
 <head>
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js"></script>
 </head>
 <body>
-    <form action="login.php" method="post">
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Iniciar Sesión</button>
-    </form>
+    <div class="container mt-4">
+        <form action="login.php" method="post" class="mb-4">
+            <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Correo electrónico" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        </form>
+    </div>
 </body>
 </html>

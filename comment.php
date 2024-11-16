@@ -29,18 +29,23 @@ if ($_POST) {
 <head>
     <meta charset="UTF-8">
     <title>Comentarios</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js"></script>
 </head>
 <body>
     <h1>Agregar Comentario</h1>
-    <nav>
-        <a href="logout.php">Cerrar Sesión</a>
-    </nav>
-    <form action="comment.php" method="post">
-        <input type="hidden" name="postId" value="1"> <!-- Aquí deberías usar el ID de la publicación actual -->
-        <textarea name="content" placeholder="Escribe tu comentario" required></textarea>
-        <button type="submit">Comentar</button>
-    </form>
+    <div class="container mt-4">
+        <nav class="mb-3">
+            <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
+        </nav>
+        <form action="comment.php" method="post" class="mb-4">
+            <input type="hidden" name="postId" value="1"> <!-- Aquí deberías usar el ID de la publicación actual -->
+            <div class="form-group">
+                <textarea name="content" class="form-control" placeholder="Escribe tu comentario" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Comentar</button>
+        </form>
+    </div>
 </body>
 </html>
