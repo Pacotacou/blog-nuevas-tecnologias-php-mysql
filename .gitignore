@@ -1,3 +1,9 @@
 .aider*
 .env
-./uploads/*
+
+# Ignore all files inside the uploads folder
+/uploads/*
+
+# Exclude the uploads folder itself
+!/uploads/
+
