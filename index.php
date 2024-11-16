@@ -41,4 +41,3 @@ $posts = $post->readAll();
     </div>
 </body>
 </html>
-?>
