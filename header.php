@@ -1,9 +1,9 @@
 <?php
-<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+<link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 <h1 style="text-align: center; margin-top: 20px;">BLOG DE NUEVAS TECNOLOGÍAS</h1>
 <?php if (isset($_SESSION['username'])): ?>
     <p style="text-align: center;">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
