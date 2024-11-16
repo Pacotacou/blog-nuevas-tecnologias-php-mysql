@@ -4,6 +4,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
+include_once 'config/db.php';
 include_once 'classes/Post.php';
 
 $database = new Database();
