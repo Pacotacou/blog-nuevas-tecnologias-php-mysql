@@ -70,4 +70,5 @@ class Post {
         }
         return false;
     }
+}
 ?>
