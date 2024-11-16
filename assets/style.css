@@ -19,13 +19,6 @@ header a {
     font-weight: bold;
 }
 
-header a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
-}
-
 .container {
     max-width: 900px;
     margin: 20px auto;
