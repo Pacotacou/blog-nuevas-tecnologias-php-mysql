@@ -3,6 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
+<h1 style="text-align: center; margin-top: 20px;">BLOG DE NUEVAS TECNOLOGÍAS</h1>
 <header>
     <nav class="container d-flex justify-content-between align-items-center">
         <a href="index.php">Inicio</a>
