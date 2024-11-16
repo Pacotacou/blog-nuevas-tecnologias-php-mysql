@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 ?>
 <header class="bg-dark text-white p-3">
     <nav class="container d-flex justify-content-between">
