@@ -27,6 +27,9 @@ $posts = $post->readAll();
             <div class="card mb-3">
                 <div class="card-body">
                     <h3 class="card-title"><?php echo htmlspecialchars($row['title']); ?></h3>
+                    <?php if (!empty($row['image_path'])): ?>
+                        <img src="<?php echo htmlspecialchars($row['image_path']); ?>" alt="Post Image" class="img-fluid mb-3">
+                    <?php endif; ?>
                     <p class="card-text"><?php echo htmlspecialchars($row['content']); ?></p>
                     <small class="text-muted">Publicado por <?php echo htmlspecialchars($row['author']); ?> el <?php echo $row['created_at']; ?></small>
                 </div>
