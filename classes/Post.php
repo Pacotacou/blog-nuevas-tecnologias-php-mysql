@@ -58,7 +58,6 @@ class Post {
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-    }
 
     public function delete($id) {
         $query = "DELETE FROM " . $this->tableName . " WHERE id = :id AND author_id = :authorId";
