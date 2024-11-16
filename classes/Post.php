@@ -60,12 +60,19 @@ class Post {
     }
 
     public function delete($id) {
-        $query = "DELETE FROM " . $this->tableName . " WHERE id = :id AND author_id = :authorId";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(':id', $id);
-        $stmt->bindParam(':authorId', $this->authorId);
+        // Primero eliminar los comentarios asociados
+        $queryComments = "DELETE FROM comments WHERE post_id = :id";
+        $stmtComments = $this->conn->prepare($queryComments);
+        $stmtComments->bindParam(':id', $id);
+        $stmtComments->execute();
 
-        if ($stmt->execute()) {
+        // Luego eliminar la publicación
+        $queryPost = "DELETE FROM " . $this->tableName . " WHERE id = :id AND author_id = :authorId";
+        $stmtPost = $this->conn->prepare($queryPost);
+        $stmtPost->bindParam(':id', $id);
+        $stmtPost->bindParam(':authorId', $this->authorId);
+
+        if ($stmtPost->execute()) {
             return true;
         }
         return false;
