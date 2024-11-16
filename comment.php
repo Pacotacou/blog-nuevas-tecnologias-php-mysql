@@ -29,6 +29,7 @@ if ($_POST) {
 <head>
     <meta charset="UTF-8">
     <title>Comentarios</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js"></script>
