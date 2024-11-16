@@ -39,8 +39,12 @@ class Post {
         $stmt->bindParam(":authorId", $this->authorId);
         $stmt->bindParam(":createdAt", $this->createdAt);
 
-        if ($stmt->execute()) {
-            return true;
+        try {
+            if ($stmt->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            error_log("Error creating post: " . $e->getMessage());
         }
         return false;
     }
@@ -48,15 +52,25 @@ class Post {
     public function readAll() {
         $query = "SELECT p.*, u.username as author FROM " . $this->tableName . " p JOIN users u ON p.author_id = u.id ORDER BY p.created_at DESC";
         $stmt = $this->conn->prepare($query);
-        $stmt->execute();
+        try {
+            $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Error reading all posts: " . $e->getMessage());
+            return false;
+        }
         return $stmt;
     }
     public function readSingle($id) {
         $query = "SELECT p.*, u.username as author FROM " . $this->tableName . " p JOIN users u ON p.author_id = u.id WHERE p.id = :id";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':id', $id);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        try {
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error reading single post: " . $e->getMessage());
+            return false;
+        }
     }
 
     public function delete($id) {
@@ -64,7 +78,12 @@ class Post {
         $queryComments = "DELETE FROM comments WHERE post_id = :id";
         $stmtComments = $this->conn->prepare($queryComments);
         $stmtComments->bindParam(':id', $id);
-        $stmtComments->execute();
+        try {
+            $stmtComments->execute();
+        } catch (PDOException $e) {
+            error_log("Error deleting comments for post: " . $e->getMessage());
+            return false;
+        }
 
         // Luego eliminar la publicación
         $queryPost = "DELETE FROM " . $this->tableName . " WHERE id = :id AND author_id = :authorId";
@@ -72,8 +91,12 @@ class Post {
         $stmtPost->bindParam(':id', $id);
         $stmtPost->bindParam(':authorId', $this->authorId);
 
-        if ($stmtPost->execute()) {
-            return true;
+        try {
+            if ($stmtPost->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            error_log("Error deleting post: " . $e->getMessage());
         }
         return false;
     }

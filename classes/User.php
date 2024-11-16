@@ -25,8 +25,12 @@ class User {
         $stmt->bindParam(":email", $this->email);
         $stmt->bindParam(":password", $this->password);
 
-        if ($stmt->execute()) {
-            return true;
+        try {
+            if ($stmt->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            error_log("Error registering user: " . $e->getMessage());
         }
         return false;
     }
@@ -37,13 +41,17 @@ class User {
 
         $this->email = htmlspecialchars(strip_tags($this->email));
         $stmt->bindParam(":email", $this->email);
-        $stmt->execute();
+        try {
+            $stmt->execute();
 
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        if ($row && password_verify($this->password, $row['password'])) {
-            $this->id = $row['id'];
-            $this->username = $row['username'];
-            return true;
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($row && password_verify($this->password, $row['password'])) {
+                $this->id = $row['id'];
+                $this->username = $row['username'];
+                return true;
+            }
+        } catch (PDOException $e) {
+            error_log("Error logging in user: " . $e->getMessage());
         }
         return false;
     }

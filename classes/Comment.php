@@ -26,8 +26,12 @@ class Comment {
         $stmt->bindParam(":content", $this->content);
         $stmt->bindParam(":createdAt", $this->createdAt);
 
-        if ($stmt->execute()) {
-            return true;
+        try {
+            if ($stmt->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            error_log("Error creating comment: " . $e->getMessage());
         }
         return false;
     }
@@ -35,7 +39,12 @@ class Comment {
         $query = "SELECT c.*, u.username FROM " . $this->tableName . " c JOIN users u ON c.user_id = u.id WHERE c.post_id = :postId ORDER BY c.created_at DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':postId', $postId);
-        $stmt->execute();
+        try {
+            $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Error reading comments by post ID: " . $e->getMessage());
+            return false;
+        }
         return $stmt;
     }
 }
