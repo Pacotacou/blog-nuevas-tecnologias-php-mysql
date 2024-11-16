@@ -33,12 +33,10 @@ $posts = $post->readAll();
     <script src="assets/script.js"></script>
 </head>
 <body>
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <div class="container mt-4">
+    <?php include 'header.php'; ?>
+    <div class="container mt-4">
+        <?php if (isset($_SESSION['user_id'])): ?>
             <h1>Crear Publicación</h1>
-            <nav class="mb-3">
-                <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
-            </nav>
             <form action="post.php" method="post" enctype="multipart/form-data" class="mb-4">
                 <div class="form-group">
                     <input type="text" name="title" class="form-control" placeholder="Título" required>
@@ -51,12 +49,7 @@ $posts = $post->readAll();
                 </div>
                 <button type="submit" class="btn btn-primary">Publicar</button>
             </form>
-        </div>
-    <?php else: ?>
-        <nav class="bg-dark text-white p-3">
-            <a href="login.php" class="text-white">Iniciar Sesión</a>
-        </nav>
-    <?php endif; ?>
+        <?php endif; ?>
 
     <div class="container mt-4">
         <h2>Publicaciones Recientes</h2>

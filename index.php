@@ -1,5 +1,4 @@
 <?php
-session_start();
 include_once 'config/db.php';
 include_once 'classes/Post.php';
 
@@ -20,12 +19,7 @@ $posts = $post->readAll();
     <script src="assets/script.js"></script>
 </head>
 <body>
-    <header class="bg-dark text-white p-3">
-        <nav class="container d-flex justify-content-between">
-            <a href="login.php" class="text-white">Iniciar Sesión</a>
-            <a href="register.php" class="text-white">Registrarse</a>
-        </nav>
-    </header>
+    <?php include 'header.php'; ?>
 
     <div class="container mt-4">
         <h2>Publicaciones Recientes</h2>
