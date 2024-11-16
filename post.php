@@ -68,7 +68,7 @@ $posts = $post->readAll();
                         <img src="<?php echo htmlspecialchars($row['image_path']); ?>" alt="Post Image" class="img-fluid mb-3">
                     <?php endif; ?>
                     <p class="card-text"><?php echo htmlspecialchars($row['content']); ?></p>
-                    <small class="text-muted">Publicado el <?php echo $row['created_at']; ?></small>
+                    <small class="text-muted">Publicado por <?php echo htmlspecialchars($row['author']); ?> el <?php echo $row['created_at']; ?></small>
                 </div>
             </div>
         <?php endwhile; ?>

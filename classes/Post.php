@@ -46,7 +46,7 @@ class Post {
     }
 
     public function readAll() {
-        $query = "SELECT * FROM " . $this->tableName . " ORDER BY created_at DESC";
+        $query = "SELECT p.*, u.username as author FROM " . $this->tableName . " p JOIN users u ON p.author_id = u.id ORDER BY p.created_at DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt;

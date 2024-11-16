@@ -34,7 +34,7 @@ $posts = $post->readAll();
                 <div class="card-body">
                     <h3 class="card-title"><?php echo htmlspecialchars($row['title']); ?></h3>
                     <p class="card-text"><?php echo htmlspecialchars($row['content']); ?></p>
-                    <small class="text-muted">Publicado el <?php echo $row['created_at']; ?></small>
+                    <small class="text-muted">Publicado por <?php echo htmlspecialchars($row['author']); ?> el <?php echo $row['created_at']; ?></small>
                 </div>
             </div>
         <?php endwhile; ?>
