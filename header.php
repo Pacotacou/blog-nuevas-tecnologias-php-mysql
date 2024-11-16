@@ -10,6 +10,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <span class="text-white">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
         <?php endif; ?>
         <?php if (isset($_SESSION['user_id'])): ?>
+            <a href="my_posts.php" class="text-white">Mis Publicaciones</a>
             <a href="logout.php" class="text-white">Cerrar Sesión</a>
         <?php else: ?>
             <a href="login.php" class="text-white">Iniciar Sesión</a>
