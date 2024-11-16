@@ -1,9 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit;
-}
 include_once 'config/db.php';
 include_once 'classes/Post.php';
 
@@ -36,15 +32,21 @@ $posts = $post->readAll();
     <script src="assets/script.js"></script>
 </head>
 <body>
-    <h1>Crear Publicación</h1>
-    <nav>
-        <a href="logout.php">Cerrar Sesión</a>
-    </nav>
-    <form action="post.php" method="post">
-        <input type="text" name="title" placeholder="Título" required>
-        <textarea name="content" placeholder="Contenido" required></textarea>
-        <button type="submit">Publicar</button>
-    </form>
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <h1>Crear Publicación</h1>
+        <nav>
+            <a href="logout.php">Cerrar Sesión</a>
+        </nav>
+        <form action="post.php" method="post">
+            <input type="text" name="title" placeholder="Título" required>
+            <textarea name="content" placeholder="Contenido" required></textarea>
+            <button type="submit">Publicar</button>
+        </form>
+    <?php else: ?>
+        <nav>
+            <a href="login.php">Iniciar Sesión</a>
+        </nav>
+    <?php endif; ?>
 
     <h2>Publicaciones Recientes</h2>
     <?php while ($row = $posts->fetch(PDO::FETCH_ASSOC)): ?>
