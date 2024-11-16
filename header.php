@@ -3,23 +3,21 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 ?>
-<header class="bg-dark text-white p-3">
-    <nav class="container d-flex justify-content-between">
-        <a href="index.php" class="text-white">Inicio</a>
-        <div class="d-flex flex-column">
+<header>
+    <nav class="container d-flex justify-content-between align-items-center">
+        <a href="index.php">Inicio</a>
+        <div>
             <?php if (isset($_SESSION['username'])): ?>
-                <span class="text-white mb-2">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
+                <span>Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</span>
             <?php endif; ?>
-            <div>
-                <?php if (isset($_SESSION['user_id'])): ?>
-                    <a href="post.php" class="text-white">Crear Publicación</a>
-                    <a href="my_posts.php" class="text-white">Mis Publicaciones</a>
-                    <a href="logout.php" class="text-white">Cerrar Sesión</a>
-                <?php else: ?>
-                    <a href="login.php" class="text-white">Iniciar Sesión</a>
-                    <a href="register.php" class="text-white">Registrarse</a>
-                <?php endif; ?>
-            </div>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="post.php">Crear Publicación</a>
+                <a href="my_posts.php">Mis Publicaciones</a>
+                <a href="logout.php">Cerrar Sesión</a>
+            <?php else: ?>
+                <a href="login.php">Iniciar Sesión</a>
+                <a href="register.php">Registrarse</a>
+            <?php endif; ?>
         </div>
     </nav>
 </header>
