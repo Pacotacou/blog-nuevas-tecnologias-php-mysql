@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const messages = document.querySelectorAll('p');
-    messages.forEach(message => {
+    const alerts = document.querySelectorAll('.alert');
+    alerts.forEach(alert => {
         setTimeout(() => {
-            message.style.display = 'none';
+            alert.style.display = 'none';
         }, 3000);
     });
 });
