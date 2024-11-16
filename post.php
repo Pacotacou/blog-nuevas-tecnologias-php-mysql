@@ -37,9 +37,10 @@ $posts = $post->readAll();
         <nav>
             <a href="logout.php">Cerrar Sesión</a>
         </nav>
-        <form action="post.php" method="post">
+        <form action="post.php" method="post" enctype="multipart/form-data">
             <input type="text" name="title" placeholder="Título" required>
             <textarea name="content" placeholder="Contenido" required></textarea>
+            <input type="file" name="image">
             <button type="submit">Publicar</button>
         </form>
     <?php else: ?>
@@ -52,6 +53,9 @@ $posts = $post->readAll();
     <?php while ($row = $posts->fetch(PDO::FETCH_ASSOC)): ?>
         <div>
             <h3><?php echo htmlspecialchars($row['title']); ?></h3>
+            <?php if (!empty($row['image_path'])): ?>
+                <img src="<?php echo htmlspecialchars($row['image_path']); ?>" alt="Post Image" style="max-width:100%;">
+            <?php endif; ?>
             <p><?php echo htmlspecialchars($row['content']); ?></p>
             <small>Publicado el <?php echo $row['created_at']; ?></small>
         </div>

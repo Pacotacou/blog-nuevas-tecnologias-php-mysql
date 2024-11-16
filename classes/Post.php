@@ -15,7 +15,7 @@ class Post {
     }
 
     public function create() {
-        $query = "INSERT INTO " . $this->tableName . " SET title=:title, content=:content, author_id=:authorId, created_at=:createdAt";
+        $query = "INSERT INTO " . $this->tableName . " SET title=:title, content=:content, image_path=:imagePath, author_id=:authorId, created_at=:createdAt";
         $stmt = $this->conn->prepare($query);
 
         $this->title = htmlspecialchars(strip_tags($this->title));
@@ -23,8 +23,19 @@ class Post {
         $this->authorId = htmlspecialchars(strip_tags($this->authorId));
         $this->createdAt = date('Y-m-d H:i:s');
 
+        // Handle image upload
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+            $targetDir = "uploads/";
+            $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+            move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile);
+            $this->imagePath = $targetFile;
+        } else {
+            $this->imagePath = null;
+        }
+
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":content", $this->content);
+        $stmt->bindParam(":imagePath", $this->imagePath);
         $stmt->bindParam(":authorId", $this->authorId);
         $stmt->bindParam(":createdAt", $this->createdAt);
 
