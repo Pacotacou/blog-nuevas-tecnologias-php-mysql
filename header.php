@@ -12,6 +12,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <?php endif; ?>
             <div>
                 <?php if (isset($_SESSION['user_id'])): ?>
+                    <a href="post.php" class="text-white">Crear Publicación</a>
                     <a href="my_posts.php" class="text-white">Mis Publicaciones</a>
                     <a href="logout.php" class="text-white">Cerrar Sesión</a>
                 <?php else: ?>
