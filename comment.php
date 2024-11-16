@@ -13,7 +13,7 @@ $comment = new Comment($db);
 
 if ($_POST) {
     $comment->postId = $_POST['postId'];
-    $comment->userId = 1; // Aquí deberías usar el ID del usuario autenticado
+    $comment->userId = $_SESSION['user_id'];
     $comment->content = $_POST['content'];
 
     if ($comment->create()) {
@@ -33,6 +33,9 @@ if ($_POST) {
 </head>
 <body>
     <h1>Agregar Comentario</h1>
+    <nav>
+        <a href="logout.php">Cerrar Sesión</a>
+    </nav>
     <form action="comment.php" method="post">
         <input type="hidden" name="postId" value="1"> <!-- Aquí deberías usar el ID de la publicación actual -->
         <textarea name="content" placeholder="Escribe tu comentario" required></textarea>

@@ -14,7 +14,7 @@ $post = new Post($db);
 if ($_POST) {
     $post->title = $_POST['title'];
     $post->content = $_POST['content'];
-    $post->authorId = 1; // Aquí deberías usar el ID del usuario autenticado
+    $post->authorId = $_SESSION['user_id'];
 
     if ($post->create()) {
         echo "Publicación creada exitosamente.";
@@ -35,6 +35,9 @@ $posts = $post->readAll();
 </head>
 <body>
     <h1>Crear Publicación</h1>
+    <nav>
+        <a href="logout.php">Cerrar Sesión</a>
+    </nav>
     <form action="post.php" method="post">
         <input type="text" name="title" placeholder="Título" required>
         <textarea name="content" placeholder="Contenido" required></textarea>
