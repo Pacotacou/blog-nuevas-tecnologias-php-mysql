@@ -29,6 +29,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
 </head>
 <body>
     <form action="login.php" method="post">

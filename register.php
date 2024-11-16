@@ -27,6 +27,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <title>Registro de Usuario</title>
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
 </head>
 <body>
     <form action="register.php" method="post">

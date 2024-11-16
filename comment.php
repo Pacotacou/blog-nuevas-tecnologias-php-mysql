@@ -30,6 +30,7 @@ if ($_POST) {
     <meta charset="UTF-8">
     <title>Comentarios</title>
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
 </head>
 <body>
     <h1>Agregar Comentario</h1>

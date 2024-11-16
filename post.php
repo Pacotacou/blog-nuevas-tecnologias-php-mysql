@@ -33,6 +33,7 @@ $posts = $post->readAll();
     <meta charset="UTF-8">
     <title>Publicaciones</title>
     <link rel="stylesheet" href="assets/style.css">
+    <script src="assets/script.js"></script>
 </head>
 <body>
     <h1>Crear Publicación</h1>
