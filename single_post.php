@@ -38,7 +38,7 @@ if ($_POST && isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <title><?php echo htmlspecialchars($postDetails['title']); ?></title>
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="assets/favicon.png" type="image/x-icon">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
     <script src="assets/script.js"></script>
