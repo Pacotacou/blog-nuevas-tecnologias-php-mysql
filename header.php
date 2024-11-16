@@ -4,6 +4,9 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 ?>
 <h1 style="text-align: center; margin-top: 20px;">BLOG DE NUEVAS TECNOLOGÍAS</h1>
+<?php if (isset($_SESSION['username'])): ?>
+    <p style="text-align: center;">Bienvenido, <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
+<?php endif; ?>
 <header>
     <nav class="container d-flex justify-content-between align-items-center">
         <a href="index.php">Inicio</a>
