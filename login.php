@@ -15,7 +15,7 @@ if ($_POST) {
     if ($user->login()) {
         $_SESSION['user_id'] = $user->id;
         $_SESSION['username'] = $user->username;
-        header("Location: post.php");
+        header("Location: index.php");
         exit;
     } else {
         echo "<p style='color:red;'>Error al iniciar sesión. Verifique sus credenciales.</p>";
