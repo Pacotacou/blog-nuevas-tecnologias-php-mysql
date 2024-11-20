@@ -74,7 +74,7 @@ class Post {
     }
 
     public function update() {
-        $query = "UPDATE " . $this->tableName . " SET title=:title, content=:content WHERE id=:id AND author_id=:authorId";
+        $query = "UPDATE " . $this->tableName . " SET title=:title, content=:content, image_path=:imagePath WHERE id=:id AND author_id=:authorId";
         $stmt = $this->conn->prepare($query);
 
         $this->title = htmlspecialchars(strip_tags($this->title));
@@ -82,6 +82,7 @@ class Post {
 
         $stmt->bindParam(":title", $this->title);
         $stmt->bindParam(":content", $this->content);
+        $stmt->bindParam(":imagePath", $this->imagePath);
         $stmt->bindParam(":id", $this->id);
         $stmt->bindParam(":authorId", $this->authorId);
 

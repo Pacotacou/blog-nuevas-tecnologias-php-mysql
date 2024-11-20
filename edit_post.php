@@ -21,6 +21,17 @@ if ($_GET && isset($_GET['id'])) {
         $post->id = $postId;
         $post->title = $_POST['title'];
         $post->content = $_POST['content'];
+        
+        // Manejar la carga de la imagen
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+            $targetDir = "uploads/";
+            $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+            move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile);
+            $post->imagePath = $targetFile;
+        } else {
+            $post->imagePath = $postDetails['image_path']; // Mantener la imagen actual si no se carga una nueva
+        }
+
         $post->authorId = $_SESSION['user_id'];
 
         if ($post->update()) {
@@ -55,6 +66,9 @@ if ($_GET && isset($_GET['id'])) {
             </div>
             <div class="form-group">
                 <textarea name="content" class="form-control" required><?php echo htmlspecialchars($postDetails['content']); ?></textarea>
+            </div>
+            <div class="form-group">
+                <input type="file" name="image" class="form-control-file">
             </div>
             <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
