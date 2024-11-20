@@ -50,6 +50,7 @@ $posts = $post->readAll();
                         <?php endif; ?>
                         <p class="card-text"><?php echo htmlspecialchars($row['content']); ?></p>
                         <small class="text-muted">Publicado el <?php echo $row['created_at']; ?></small>
+                        <a href="edit_post.php?id=<?php echo $row['id']; ?>" class="btn btn-warning mt-3">Editar</a>
                         <a href="my_posts.php?delete_id=<?php echo $row['id']; ?>" class="btn btn-danger mt-3">Eliminar</a>
                     </div>
                 </div>

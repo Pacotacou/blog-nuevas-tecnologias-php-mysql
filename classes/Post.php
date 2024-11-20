@@ -73,7 +73,27 @@ class Post {
         }
     }
 
-    public function delete($id) {
+    public function update() {
+        $query = "UPDATE " . $this->tableName . " SET title=:title, content=:content WHERE id=:id AND author_id=:authorId";
+        $stmt = $this->conn->prepare($query);
+
+        $this->title = htmlspecialchars(strip_tags($this->title));
+        $this->content = htmlspecialchars(strip_tags($this->content));
+
+        $stmt->bindParam(":title", $this->title);
+        $stmt->bindParam(":content", $this->content);
+        $stmt->bindParam(":id", $this->id);
+        $stmt->bindParam(":authorId", $this->authorId);
+
+        try {
+            if ($stmt->execute()) {
+                return true;
+            }
+        } catch (PDOException $e) {
+            error_log("Error updating post: " . $e->getMessage());
+        }
+        return false;
+    }
         // Primero eliminar los comentarios asociados
         $queryComments = "DELETE FROM comments WHERE post_id = :id";
         $stmtComments = $this->conn->prepare($queryComments);
