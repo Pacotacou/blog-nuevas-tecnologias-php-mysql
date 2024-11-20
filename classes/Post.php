@@ -94,6 +94,8 @@ class Post {
         }
         return false;
     }
+
+    public function delete($id) {
         // Primero eliminar los comentarios asociados
         $queryComments = "DELETE FROM comments WHERE post_id = :id";
         $stmtComments = $this->conn->prepare($queryComments);
