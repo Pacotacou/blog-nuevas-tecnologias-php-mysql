@@ -8,6 +8,9 @@ $db = $database->getConnection();
 
 $post = new Post($db);
 
+/**
+ * Handle post creation.
+ */
 if ($_POST) {
     $post->title = $_POST['title'];
     $post->content = $_POST['content'];

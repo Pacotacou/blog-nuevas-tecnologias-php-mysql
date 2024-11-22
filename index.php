@@ -6,6 +6,9 @@ $database = new Database();
 $db = $database->getConnection();
 
 $post = new Post($db);
+/**
+ * Retrieve all posts for display.
+ */
 $posts = $post->readAll();
 ?>
 

@@ -3,6 +3,9 @@ session_start();
 include_once 'config/db.php';
 include_once 'classes/Post.php';
 
+/**
+ * Redirect to login if user is not authenticated.
+ */
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
@@ -13,6 +16,9 @@ $db = $database->getConnection();
 
 $post = new Post($db);
 
+/**
+ * Fetch and update post details if post ID is provided.
+ */
 if ($_GET && isset($_GET['id'])) {
     $postId = $_GET['id'];
     $postDetails = $post->readSingle($postId);

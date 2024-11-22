@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Class User
+ * Handles user registration and login functionalities.
+ */
 class User {
     private $conn;
     private $tableName = "users";
@@ -13,6 +17,10 @@ class User {
         $this->conn = $db;
     }
 
+    /**
+     * Register a new user.
+     * @return bool True on success, false on failure.
+     */
     public function register() {
         $query = "INSERT INTO " . $this->tableName . " SET username=:username, email=:email, password=:password";
         $stmt = $this->conn->prepare($query);
@@ -35,6 +43,10 @@ class User {
         return false;
     }
 
+    /**
+     * Log in a user.
+     * @return bool True on success, false on failure.
+     */
     public function login() {
         $query = "SELECT id, username, password FROM " . $this->tableName . " WHERE email = :email";
         $stmt = $this->conn->prepare($query);

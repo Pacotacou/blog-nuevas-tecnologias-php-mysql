@@ -10,6 +10,9 @@ $db = $database->getConnection();
 $post = new Post($db);
 $comment = new Comment($db);
 
+/**
+ * Fetch post details and comments if post ID is provided.
+ */
 if (isset($_GET['id'])) {
     $postId = $_GET['id'];
     $postDetails = $post->readSingle($postId);
@@ -19,6 +22,9 @@ if (isset($_GET['id'])) {
     exit;
 }
 
+/**
+ * Handle comment submission if user is logged in.
+ */
 if ($_POST && isset($_SESSION['user_id'])) {
     $comment->postId = $postId;
     $comment->userId = $_SESSION['user_id'];
